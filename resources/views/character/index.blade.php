@@ -66,8 +66,6 @@
                                     <td>{{$character->intelligence}}</td>
                                     <td>{{$character->lifepoint}}</td>
                                   </tr>
-
-
                                 </tbody>
                               </table>
                         </div>

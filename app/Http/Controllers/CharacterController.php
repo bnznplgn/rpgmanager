@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CharacterRequest;
 use App\Models\Character;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,9 @@ class CharacterController extends Controller
     public function index()
     {
         return view('character.index')
-        ->with([
-            'characters' => Character::all()
-        ]);
+            ->with([
+                'characters' => Character::all()
+            ]);
     }
 
     /**
@@ -36,9 +37,10 @@ class CharacterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CharacterRequest $request)
     {
-        //
+        Character::create($request->toArray());
+        return redirect()->route('characters.index');
     }
 
     /**
@@ -47,9 +49,12 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Character $character)
     {
-        //
+        return view('character.show')
+        ->with([
+            'characters' => $character,
+        ]);
     }
 
     /**

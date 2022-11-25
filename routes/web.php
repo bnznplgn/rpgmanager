@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\GamerController;
 use Illuminate\Support\Facades\Route;
 
 /*
