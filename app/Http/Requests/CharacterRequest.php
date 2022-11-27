@@ -26,12 +26,12 @@ class CharacterRequest extends FormRequest
         return [
             'name' => 'required|min:4',
             'description' => 'min:4',
-            'speciality' => 'required',
-            'magic' => 'required',
-            'strength' => 'required',
-            'agility' => 'required',
-            'intelligence' => 'required',
-            'lifepoint' => 'required',
+            'speciality' => 'min:2',
+            'magic' => 'min:2',
+            'strength' => 'min:2',
+            'agility' => 'min:2',
+            'intelligence' => 'min:2',
+            'lifepoint' => 'min:2',
         ];
     }
 }

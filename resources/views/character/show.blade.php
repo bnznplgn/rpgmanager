@@ -1,7 +1,7 @@
 @extends('base') @section('title', 'RPG Manager / Personnage')
 @section('content')
 
-<div class="bg-light rounded-3 position-relative p-3 p-sm-4 mt-5">
+<div class="bg-light rounded-3 p-3 p-sm-4 mt-5">
     <h1>{{ $characters->name }}</h1>
 
     <dl>
@@ -33,7 +33,7 @@
             </tbody>
         </table>
     </div>
-    <div class="row">
+    <div class="row p-2">
         <a
             class="btn btn-primary mb-3"
             href="{{ route('characters.edit', $characters->id) }}"

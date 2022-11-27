@@ -63,9 +63,12 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Character $character)
     {
-        //
+        return view('character.edit')
+        ->with([
+            'characters' => $character,
+        ]);
     }
 
     /**
@@ -75,9 +78,12 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CharacterRequest $request, Character $character)
     {
-        //
+        $character->fill($request->toArray());
+        $character->save();
+
+        return redirect()->route('characters.show', $character->id);
     }
 
     /**
@@ -86,8 +92,10 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Character $character)
     {
-        //
+        $character->delete();
+
+        return redirect()->route('characters.index');
     }
 }

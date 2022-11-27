@@ -1,43 +1,29 @@
 @extends('base')
 
-@section('title', 'RPG Manager / Création du personnage')
+@section('title', 'RPGManager / Edition d\'un personnage')
 
 @section('content')
 
-<section class="pt-5 pt-md-5">
-    <div class="container">
-        <!-- Title -->
-        <div class="row mb-4">
-            <div class="col-12 text-center">
-                <h2 class="mb-2"><i class="fa-solid fa-hat-wizard fa-2xl"></i><i class="fa-solid fa-plus"></i></h2> 
-            </div>
-        </div>
+<form method="post" action="{{ route('characters.update', $characters->id) }}">
+    @csrf
+    @method('PUT')
+
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $errorMessage)
+            <li>{{ $errorMessage }}</li>
+            @endforeach
+        </ul>
     </div>
-</section>
-
-    <h2>Nouveau personnage</h2>
-
+    @endif
     
 
-
-    <form method="post" action="{{ route('characters.store') }}">
-        @csrf
-
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $errorMessage)
-                        <li>{{ $errorMessage }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        
-
+    <div class="bg-light rounded-3 p-3 p-sm-4 mt-5">
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
             <div class="input-group has-validation">
-                <input required type="text" value="{{ old('name') }}" class="form-control
+                <input required type="text" value="{{ old('name', $characters->name) }}" class="form-control
                 @if($errors->has('name')) is-invalid @endif
                 " name="name" id="name" placeholder="" />
 
@@ -52,9 +38,10 @@
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <div class="input-group has-validation">
-                <textarea type="text" value="{{ old('description') }}" class="form-control
-                @if($errors->has('description')) is-invalid @endif
-                " name="description" id="description" placeholder="" />
+                <textarea class="form-control
+                @if($errors->has('description')) is-invalid @endif" 
+                name="description" id="description" rows="4">
+                {{ old('description', $characters->description) }}
                 </textarea>
 
                 @if($errors->has('description'))
@@ -69,7 +56,7 @@
             <label for="speciality" class="form-label">Spécialité</label>
             <div class="input-group has-validation">
                 <select required id="speciality" name="speciality" class="form-control form-control-lg @if($errors->has('speciality')) is-invalid @endif">
-                        <option selected>{{old('speciality')}}</option>
+                        <option selected>{{old('speciality', $characters->speciality)}}</option>
                         <option value="Guerrier">Guerrier</option>
                         <option value="Mage">Mage</option>
                         <option value="Druide">Druide</option>
@@ -85,49 +72,38 @@
             </div>
         </div>
 
+        <div class="mb-3">
+            <table class="table bg-body shadow rounded-2 p-2">
+                <thead>
+                    <tr>
+                        <th scope="col">MAG(Magie)</th>
+                        <th scope="col">FOR(Force)</th>
+                        <th scope="col">AGI(Agilité)</th>
+                        <th scope="col">INT(Intelligence)</th>
+                        <th scope="col">PV(Point de vie)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                {{--    <td>{{old('magic', $characters->magic)}}</td>
+                        <td>{{old('stregnth', $characters->strength)}}</td>
+                        <td>{{old('agility', $characters->agility)}}</td>
+                        <td>{{old('intelligece', $characters->intelligence)}}</td>
+                        <td>{{old('lifepoint', $characters->lifepoint)}}</td> --}}
+                        <td>{{$characters->magic}}</td>
+                        <td>{{$characters->strength}}</td>
+                        <td>{{$characters->agility}}</td>
+                        <td>{{$characters->intelligence}}</td>
+                        <td>{{$characters->lifepoint}}</td>
 
-            <div class="row">
-                <div class="col mb-3">
-                    <label for="magic" class="form-label">Magie (MAG)</label>
-                    <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
-                        name="magic" id="magic" placeholder="" />
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <label for="strength" class="form-label">Force (FOR)</label>
-                    <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
-                        name="strength" id="strength" placeholder="" />
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <label for="agility" class="form-label">Agilité (AGI) </label>
-                    <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
-                        name="agility" id="agility" placeholder="" />
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <label for="intelligence" class="form-label">Intelligence (INT)</label>
-                    <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
-                        name="intelligence" id="intelligence" placeholder="" />
-                    </div>
-                </div>
-                <div class="col mb-3">
-                    <label for="lifepoint" class="form-label">Point de vie (PV)</label>
-                    <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(20, 50) }}" class="form-control" 
-                        name="lifepoint" id="lifepoint" placeholder="" />
-                    </div>
-                </div>
-            </div>
-
-     
-        <button type="submit" class="btn btn-primary">Créer un nouveau personnage</button>
-
-        
-    </form>
-
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Mettre à jour le personnage</button>
+    </div>
+</form>
 @endsection

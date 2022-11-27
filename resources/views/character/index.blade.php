@@ -4,11 +4,11 @@
 
 @section('content')
 
-<section class="pt-5 pt-md-5">
+<section class="mb-5">
     <div class="container">
         <!-- Title -->
         <div class="row mb-4">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center mt-5">
                 <h2 class="mb-1">Tous les personnages</h2> 
                 <a href="{{ route('characters.create') }}" class="btn btn-primary mb-5"><i class="fa-solid fa-plus"></i></a>
             </div>

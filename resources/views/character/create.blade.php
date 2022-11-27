@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="pt-5 pt-md-5">
+<section class="container pt-5 pt-md-5">
     <div class="container">
         <!-- Title -->
         <div class="row mb-4">
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-</section>
+
 
     <h2>Nouveau personnage</h2>
 
@@ -86,48 +86,49 @@
         </div>
 
 
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col mb-3">
                     <label for="magic" class="form-label">Magie (MAG)</label>
                     <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
+                        <input readonly type="number" value="{{ rand(1, 14) }}" class="bg-secondary form-control text-white" 
                         name="magic" id="magic" placeholder="" />
                     </div>
                 </div>
                 <div class="col mb-3">
                     <label for="strength" class="form-label">Force (FOR)</label>
                     <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
+                        <input readonly type="number" value="{{ rand(1, 14) }}" class="bg-secondary form-control text-white" 
                         name="strength" id="strength" placeholder="" />
                     </div>
                 </div>
                 <div class="col mb-3">
                     <label for="agility" class="form-label">Agilité (AGI) </label>
                     <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
+                        <input readonly type="number" value="{{ rand(1, 14) }}" class="bg-secondary form-control text-white" 
                         name="agility" id="agility" placeholder="" />
                     </div>
                 </div>
                 <div class="col mb-3">
                     <label for="intelligence" class="form-label">Intelligence (INT)</label>
                     <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(1, 14) }}" class="form-control" 
+                        <input readonly type="number" value="{{ rand(1, 14) }}" class="bg-secondary form-control text-white" 
                         name="intelligence" id="intelligence" placeholder="" />
                     </div>
                 </div>
                 <div class="col mb-3">
                     <label for="lifepoint" class="form-label">Point de vie (PV)</label>
                     <div class="input-group has-validation">
-                        <input readonly type="number" value="{{ rand(20, 50) }}" class="form-control" 
+                        <input readonly type="number" value="{{ rand(20, 50) }}" class="bg-secondary form-control text-white" 
                         name="lifepoint" id="lifepoint" placeholder="" />
                     </div>
+                    
                 </div>
             </div>
 
      
-        <button type="submit" class="btn btn-primary">Créer un nouveau personnage</button>
+        <button type="submit" class="mb-5 btn btn-primary btn-lg">Créer un nouveau personnage</button>
 
         
     </form>
-
+</section>
 @endsection
