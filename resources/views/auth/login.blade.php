@@ -1,8 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="{{ route('characters.index')}}">
+{{--                 <x-application-imh class="w-20 h-20 fill-current text-gray-500" /> --}}
+                    <p class="text9-xl text-gray-500">RPGManager </p>
             </a>
         </x-slot>
 

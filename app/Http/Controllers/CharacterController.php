@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class CharacterController extends Controller
 {
+    
+    static protected $specialities = [
+        "Guerrier", 
+        "Mage", 
+        "Druide", 
+        "Assassin", 
+        "Berserker", 
+        "Archer"
+    ];
+
+
     /**
      * Display a listing of the resource.
      *
@@ -66,7 +77,8 @@ class CharacterController extends Controller
     public function edit(Character $character)
     {
         return view('character.edit')
-        ->with([
+        ->with([ 
+            'specialities' => static::$specialities,
             'characters' => $character,
         ]);
     }

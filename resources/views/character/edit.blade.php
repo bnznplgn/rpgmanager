@@ -4,6 +4,7 @@
 
 @section('content')
 
+<div class="container">        
 <form method="post" action="{{ route('characters.update', $characters->id) }}">
     @csrf
     @method('PUT')
@@ -56,13 +57,31 @@
             <label for="speciality" class="form-label">Spécialité</label>
             <div class="input-group has-validation">
                 <select required id="speciality" name="speciality" class="form-control form-control-lg @if($errors->has('speciality')) is-invalid @endif">
-                        <option selected>{{old('speciality', $characters->speciality)}}</option>
-                        <option value="Guerrier">Guerrier</option>
-                        <option value="Mage">Mage</option>
+{{--                         <option selected>{{old('speciality', $characters->speciality)}}</option> --}}
+{{-- @if(old('speciality', $characters->speciality) == "Mage") 
+selected="selected" 
+@endif value="Mage">Mage</option> --}}
+                @foreach ( $specialities as $speciality )
+                    <option  
+                    @if(old('speciality', $characters->speciality) == $speciality) 
+                        selected="selected" 
+                    @endif
+
+                    value="{{$speciality}}">{{$speciality}}
+                    </option>
+                @endforeach
+
+
+{{--                         <option value="Guerrier">Guerrier</option>
+                        <option 
+                        @if(old('speciality', $characters->speciality) == "Mage") 
+                        selected="selected" 
+                        @endif value="Mage">Mage</option>
                         <option value="Druide">Druide</option>
                         <option value="Assassin">Assassin</option>
                         <option value="Berserker">Berserker</option>
-                        <option value="Archer">Archer</option>
+                        <option value="Archer">Archer</option> --}}
+
                 </select>
                 @if ($errors->has('speciality'))
                 <div class="invalid-feedback">
@@ -100,10 +119,13 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    
-    <div class="mt-4">
+
         <button type="submit" class="btn btn-primary">Mettre à jour le personnage</button>
     </div>
+    
+
+
+
 </form>
+</div> 
 @endsection

@@ -27,11 +27,11 @@ class CharacterRequest extends FormRequest
             'name' => 'required|min:4',
             'description' => 'min:4',
             'speciality' => 'min:2',
-            'magic' => 'min:2',
-            'strength' => 'min:2',
-            'agility' => 'min:2',
-            'intelligence' => 'min:2',
-            'lifepoint' => 'min:2',
+            'magic' => 'min:1',
+            'strength' => 'min:1',
+            'agility' => 'min:1',
+            'intelligence' => 'min:1',
+            'lifepoint' => 'min:1',
         ];
     }
 }

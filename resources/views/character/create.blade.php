@@ -125,6 +125,15 @@
                 </div>
             </div>
 
+{{--             <div id="randomNum">0</div>
+            <button onclick="generate()">Randomize</button>
+            <script>
+            function generate(){
+                var x=document.getElementById("randomNum");
+                x.innerHTML=Math.floor((Math.random()*14)+1);
+                get
+            }
+            </script> --}}
      
         <button type="submit" class="mb-5 btn btn-primary btn-lg">Créer un nouveau personnage</button>
 
