@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Character;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/characters', CharacterController::class);
+
+Route::post('/characters/{character}/regenerate', [CharacterController::class, 'regenerate'])->name('characters.regenerate');
 
 require __DIR__.'/auth.php';

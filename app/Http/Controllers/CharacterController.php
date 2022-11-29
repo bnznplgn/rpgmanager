@@ -50,7 +50,16 @@ class CharacterController extends Controller
      */
     public function store(CharacterRequest $request)
     {
-        Character::create($request->toArray());
+        $data = $request->toArray(); 
+        $data['magic'] = rand(1,14);
+        $data['strength'] = rand(1,14);
+        $data['agility'] = rand(1,14);
+        $data['intelligence'] = rand(1,14);
+        $data['lifepoint'] = rand(20, 50);
+
+/*         $data["user_id"] =   */
+
+        Character::create($data);
         return redirect()->route('characters.index');
     }
 
@@ -109,5 +118,20 @@ class CharacterController extends Controller
         $character->delete();
 
         return redirect()->route('characters.index');
+    }
+
+    public function regenerate(Character $character)
+    {
+        $data = [];
+        $data['magic'] = rand(1,14);
+        $data['strength'] = rand(1,14);
+        $data['agility'] = rand(1,14);
+        $data['intelligence'] = rand(1,14);
+        $data['lifepoint'] = rand(20, 50);
+
+        $character->fill($data);
+        $character->save();
+
+        return redirect()->route('characters.show', $character->id);
     }
 }

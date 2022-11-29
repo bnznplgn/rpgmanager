@@ -34,6 +34,17 @@
         </table>
     </div>
     <div class="row p-2">
+        <form
+        method="post"
+        action="{{ route('characters.regenerate', $characters->id) }}"
+            >
+        @csrf
+        <div class="row mb-4" >
+            <button type="submit" class="btn btn-info">Regénérer</button>
+        </div>
+         </form>
+
+
         <a
             class="btn btn-primary mb-3"
             href="{{ route('characters.edit', $characters->id) }}"

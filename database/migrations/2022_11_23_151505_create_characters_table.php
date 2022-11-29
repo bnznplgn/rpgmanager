@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('agility');
             $table->integer('intelligence');
             $table->integer('lifepoint');
+/*             $table->integer('user_id');  */
         });
     }
 

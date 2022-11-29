@@ -86,7 +86,7 @@
         </div>
 
 
-            <div class="row mb-5">
+{{--             <div class="row mb-5">
                 <div class="col mb-3">
                     <label for="magic" class="form-label">Magie (MAG)</label>
                     <div class="input-group has-validation">
@@ -123,7 +123,7 @@
                     </div>
                     
                 </div>
-            </div>
+            </div> --}}
 
 {{--             <div id="randomNum">0</div>
             <button onclick="generate()">Randomize</button>
