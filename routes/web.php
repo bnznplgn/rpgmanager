@@ -20,18 +20,6 @@ Route::get('/', function () {
     return redirect()->route('characters.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 Route::resource('/characters', CharacterController::class);
 
 Route::post('/characters/{character}/regenerate', [CharacterController::class, 'regenerate'])->name('characters.regenerate');
-
-require __DIR__.'/auth.php';

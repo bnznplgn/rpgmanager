@@ -25,12 +25,12 @@
                 <a class="navbar-brand" href="{{route('characters.index')}}"><h1>RPGManager</h1></a>
                 <div class="ms-auto mt-3 mt-lg-0 text-right">
                     <a
-                        href="{{ route('login')}}"
+                        href="{{-- {{ route('login')}} --}}"
                         class="btn btn-outline-primary btn-lg"
                         >Se connecter</a
                     >
                     <a
-                        href="{{ route('register') }}"
+                        href="{{-- {{ route('register') }} --}}"
                         class="btn btn-primary btn-lg"
                         >S'inscrire</a
                     >
