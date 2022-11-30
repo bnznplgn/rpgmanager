@@ -120,6 +120,13 @@ class CharacterController extends Controller
         return redirect()->route('characters.index');
     }
 
+    
+    /** 
+     * Créer des statistiques aléatoire pour un personnage. 
+     * 
+     * 
+     */
+
     public function regenerate(Character $character)
     {
         $data = [];
@@ -134,4 +141,5 @@ class CharacterController extends Controller
 
         return redirect()->route('characters.show', $character->id);
     }
+    
 }

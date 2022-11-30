@@ -10,9 +10,10 @@
         <div class="row mb-4">
             <div class="col-12 text-center mt-5">
                 <h2 class="mb-1">Tous les personnages</h2> 
-{{-- @auth   --}}  
-                <a href="{{ route('characters.create') }}" class="btn btn-primary mb-5"><i class="fa-solid fa-plus"></i></a>
-{{--  @endauth  --}}
+                @auth 
+                <button href="{{ route('characters.create') }}" class="btn btn-primary btn-lg mb-5"><i class="fa-solid fa-hat-wizard fa-2xl"></i><i class="fa-solid fa-plus"></i></button>
+                
+                @endauth 
             </div>
         </div>
 

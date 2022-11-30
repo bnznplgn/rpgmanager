@@ -4,6 +4,7 @@ use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Character;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,11 @@ Route::get('/', function () {
 Route::resource('/characters', CharacterController::class);
 
 Route::post('/characters/{character}/regenerate', [CharacterController::class, 'regenerate'])->name('characters.regenerate');
+
+Route::get('dashboard', [AuthController::class, 'dashboard']); 
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
+Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
+Route::get('dashboard', [AuthController::class, 'routeToDashboard'])->name('dashboard');

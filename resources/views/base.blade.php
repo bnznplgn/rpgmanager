@@ -23,28 +23,44 @@
             <div class="row">  
             <nav class="navbar navbar-light bg-white">
                 <a class="navbar-brand" href="{{route('characters.index')}}"><h1>RPGManager</h1></a>
+                @guest      
                 <div class="ms-auto mt-3 mt-lg-0 text-right">
                     <a
-                        href="{{-- {{ route('login')}} --}}"
-                        class="btn btn-outline-primary btn-lg"
-                        >Se connecter</a
+                    href="{{route('login')}}"
+                    class="btn btn-outline-primary btn-lg"
+                    >Se connecter</a
                     >
                     <a
-                        href="{{-- {{ route('register') }} --}}"
-                        class="btn btn-primary btn-lg"
-                        >S'inscrire</a
+                    href="{{route('register-user') }}"
+                    class="btn btn-primary btn-lg"
+                    >S'inscrire</a
                     >
                 </div>
+                @endguest
+                @auth
+                <div class="ms-auto mt-3 mt-lg-0 text-right">
+                    <a
+                    href="{{route('signout')}}"
+                    class="btn btn-outline-primary btn-lg"
+                    >Se déconnecter</a
+                    >
+                    <a
+                    href="{{ route('dashboard') }}"
+                    class="btn btn-primary btn-lg"
+                    >Mon compte</a
+                    >
+                </div>
+                @endauth
             </nav>
         </div>
 
         </header>
 
         <main class="bg-light pt-14 pb-16">
-            <div class="content">@yield('content')</div>
+            <div class="content bg-light">@yield('content')</div>
         </main>
 
-        <footer class="tp-lg-10 pt-5 footer bg-white">
+        <footer class="tp-lg-10 pt-5 footer bg-white mt-10 bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-12">
