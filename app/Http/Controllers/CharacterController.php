@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CharacterRequest;
 use App\Models\Character;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CharacterController extends Controller
 {
@@ -16,6 +17,10 @@ class CharacterController extends Controller
         "Assassin", 
         "Berserker", 
         "Archer"
+    ];
+
+    static protected $specialitiesimages = [
+
     ];
 
 
@@ -56,8 +61,7 @@ class CharacterController extends Controller
         $data['agility'] = rand(1,14);
         $data['intelligence'] = rand(1,14);
         $data['lifepoint'] = rand(20, 50);
-
-/*         $data["user_id"] =   */
+        $data['user_id'] = Auth::user()->id;
 
         Character::create($data);
         return redirect()->route('characters.index');

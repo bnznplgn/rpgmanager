@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Character>
@@ -28,7 +29,9 @@ class CharacterFactory extends Factory
             'strength' => $this->faker->numberBetween(1, 14),
             'agility' => $this->faker->numberBetween(1,14),
             'intelligence' => $this->faker->numberBetween(1, 14),
-            'lifepoint' => $this->faker->numberBetween(20, 50)
+            'lifepoint' => $this->faker->numberBetween(20, 50),
+            'user_id' => User::all()->first()
+
         ];
     }
 }

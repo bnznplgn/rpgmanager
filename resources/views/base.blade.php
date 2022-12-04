@@ -22,7 +22,7 @@
         <header class="container">
             <div class="row">  
             <nav class="navbar navbar-light bg-white">
-                <a class="navbar-brand" href="{{route('characters.index')}}"><h1>RPGManager</h1></a>
+                <a class="navbar-brand" href="{{route('characters.index')}}"><img src="https://zupimages.net/up/22/48/t90j.png" width="130" height="80" alt="RPGManager-logo"></a>
                 @guest      
                 <div class="ms-auto mt-3 mt-lg-0 text-right">
                     <a

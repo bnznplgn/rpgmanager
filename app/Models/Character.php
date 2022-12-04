@@ -19,7 +19,8 @@ class Character extends Model
         'strength',
         'agility',
         'intelligence',
-        'lifepoint'
+        'lifepoint',
+        'user_id'
     ];
 
     private string $name; 
